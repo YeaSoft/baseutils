@@ -98,7 +98,7 @@ module.exports.getSpecifiedStr = function( value, default_value ) {
 	return typeof value === 'string' && value.length > 0 ? value : default_value;
 }
 
-module.exports.getValidArray = function( value, default_value ) {
+module.exports.getValidArr = function( value, default_value ) {
 	return value instanceof Array ? value : default_value;
 }
 

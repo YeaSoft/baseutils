@@ -102,7 +102,7 @@ export function getSpecifiedStr( value: any, default_value?: string | undefined 
 * @param {*} value - The input value to check and return
 * @param {*[]=} default_value - The default value to return if the test fails. (default: undefined)
 */
-export function getValidArray( value: any, default_value?: any[] | undefined ): any[];
+export function getValidArr( value: any, default_value?: any[] | undefined ): any[];
 
 /**
  * Returns a valid integer
