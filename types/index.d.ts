@@ -105,6 +105,20 @@ export function getSpecifiedStr( value: any, default_value?: string | undefined 
 export function getValidArr( value: any, default_value?: any[] | undefined ): any[];
 
 /**
+ * Returns a valid boolean
+ *
+ * This function checks if the passed value can be parsed as a boolean vallue. If yes, the
+ * parsed result is returned, otherwise `default_value`.
+ * If the supplied value is a string, "on", "yes" or "true" are interpreted as `true` and
+ * "off", "no" or "false" are interpreted as `false` regardless of the case.
+ * If the value cannot be decoded, `default_value` is returned.
+ *
+ * @param {*} value - The input value to check and return
+ * @param {boolean=} default_value - The default value to return if the test fails. (default: undefined)
+ */
+export function getValidBool( value: any, default_value?: boolean | undefined ): boolean;
+
+/**
  * Returns a valid integer
  *
  * This function checks if the passed value can be parsed as an integer number. If yes,

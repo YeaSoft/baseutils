@@ -83,7 +83,7 @@ module.exports.base64DecodeLazy = function( encoded, default_value ) {
 	}
 	catch ( error ) { /* TUNIX */ }
 	return default_value;
-}
+};
 
 module.exports.getJsonValue = function( value, default_value ) {
 	try {
@@ -96,16 +96,38 @@ module.exports.getJsonValue = function( value, default_value ) {
 
 module.exports.getSpecifiedStr = function( value, default_value ) {
 	return typeof value === 'string' && value.length > 0 ? value : default_value;
-}
+};
 
 module.exports.getValidArr = function( value, default_value ) {
 	return value instanceof Array ? value : default_value;
-}
+};
+
+module.exports.getValidBool = function( value, default_value ) {
+	switch ( typeof value ) {
+		case 'string':
+			switch ( value.toLowerCase() ) {
+				case 'on':
+				case 'yes':
+				case 'true':
+					return true;
+				case 'no':
+				case 'off':
+				case 'false':
+					return false;
+			}
+			break;
+		case 'number':
+			return value != 0;
+		case 'boolean':
+			return value;
+	}
+	return default_value;
+};
 
 module.exports.getValidInt = function( value, default_value ) {
 	let retval = parseInt( value );
 	return isNaN( retval ) ? default_value : retval;
-}
+};
 
 module.exports.getValidIntRange = function( value, min, max, default_value ) {
 	let minval = parseInt( min );
@@ -121,12 +143,12 @@ module.exports.getValidIntRange = function( value, min, max, default_value ) {
 		return default_value;
 	}
 	return retval;
-}
+};
 
 module.exports.getValidNum = function( value, default_value ) {
 	let retval = parseFloat( value );
 	return isNaN( retval ) ? default_value : retval;
-}
+};
 
 module.exports.getValidNumRange = function( value, min, max, default_value ) {
 	let minval = parseFloat( min );
@@ -142,15 +164,15 @@ module.exports.getValidNumRange = function( value, min, max, default_value ) {
 		return default_value;
 	}
 	return retval;
-}
+};
 
 module.exports.getValidObj = function( value, default_value ) {
 	return value instanceof Object ? value : default_value;
-}
+};
 
 module.exports.getValidStr = function( value, default_value ) {
 	return typeof value === 'string' ? value : default_value;
-}
+};
 
 module.exports.getValidStrRange = function( value, min, max, default_value ) {
 	let minval = parseInt( min );
@@ -165,11 +187,11 @@ module.exports.getValidStrRange = function( value, min, max, default_value ) {
 		return default_value;
 	}
 	return value;
-}
+};
 
 module.exports.getValidStrExpr = function( value, expr, default_value ) {
 	return typeof value === 'string' && expr instanceof RegExp && expr.test( value ) ? value : default_value;
-}
+};
 
 module.exports.getModuleRootPath = function( modulename, default_value ) {
 	try {
@@ -184,16 +206,16 @@ module.exports.getModuleRootPath = function( modulename, default_value ) {
 		name => fs.existsSync( path.join( name, modulename ) )
 	);
 	return found ? path.join( found, modulename ) : ( default_value || path.join( 'node_modules', modulename ) );
-}
+};
 
 module.exports.makeModuleRootPath = function( modulename, ...args ) {
 	args.splice( 0, 0, module.exports.getModuleRootPath( modulename ) );
 	return path.join.apply( path, args );
-}
+};
 
 module.exports.mkdirSyncRecursively = function( dirname, mode ) {
 	fs.mkdirSync( dirname, { recursive: true, mode: typeof mode === 'number' ? mode : 0o755 } );
-}
+};
 
 module.exports.createDirectoryIfNotExists = function( dirname, mode ) {
 	try {
@@ -203,7 +225,7 @@ module.exports.createDirectoryIfNotExists = function( dirname, mode ) {
 	catch ( error ) {
 		return false;
 	}
-}
+};
 
 module.exports.isDir = function( ...paths ) {
 	try {
@@ -211,7 +233,7 @@ module.exports.isDir = function( ...paths ) {
 	}
 	catch ( error ) { /* TUNIX */ }
 	return false;
-}
+};
 
 module.exports.isFile = function( ...paths ) {
 	try {
@@ -219,4 +241,4 @@ module.exports.isFile = function( ...paths ) {
 	}
 	catch ( error ) { /* TUNIX */ }
 	return false;
-}
+};
