@@ -220,6 +220,20 @@ export function getValidStrRange( value: any, min?: number | undefined, max?: nu
 export function getValidStrExpr( value: any, expr: RegExp, default_value?: string | undefined ): string;
 
 /**
+ * Returns an array of tokens
+ *
+ * This function checks if the passed value is of type string or Array and returns
+ * an array of tokens. If the passwed value is a string, it is split in tokens using
+ * comma as separator. All tokens will be trimmed. Empty tokens will be removed from the
+ * result.
+ *
+ * @param value - The tokens to split (either as array or comma separated list)
+ * @param default_value - The default value to return on failure. (default: empty array)
+ * @returns  Array containing the decoded tokens
+ */
+export function getValidTokens( value: string | string[], default_value?: string[] | undefined ): string[];
+
+/**
  * Determine the physical root path of an installed module dependency
  *
  * This function allows to determine the physical root path of an installed module dependency.

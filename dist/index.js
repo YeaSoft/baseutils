@@ -193,6 +193,15 @@ module.exports.getValidStrExpr = function( value, expr, default_value ) {
 	return typeof value === 'string' && expr instanceof RegExp && expr.test( value ) ? value : default_value;
 };
 
+module.exports.getValidTokens = function( value, default_value ) {
+	if ( typeof value === "string" && value.length > 0 ) {
+		return value.split( "," ).map( token => token.trim() ).filter( token => token.length > 0 );
+	} else if ( value instanceof Array ) {
+		return value.map( token => token.trim() ).filter( token => token.length > 0 );
+	}
+	return typeof default_value === "undefined" ? [] : default_value;
+};
+
 module.exports.getModuleRootPath = function( modulename, default_value ) {
 	try {
 		let found = module.parent.parent.paths.find(
