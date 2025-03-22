@@ -7,7 +7,7 @@
 	},
 	"license": "MIT",
 	"main": "dist/index.js",
-	"types": "types/index.d.ts",
+	"types": "dist/index.d.ts",
 	"bugs": "https://github.com/YeaSoft/baseutils/issues",
 	"repository": {
 		"type": "git",

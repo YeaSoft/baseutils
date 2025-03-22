@@ -1,4 +1,4 @@
-// Type definitions for @yea/baseutils
+// Type definitions for @yeasoft/baseutils
 // Project: All my projects
 // Definitions by: Leo Moll
 
@@ -7,7 +7,7 @@
  *
  * This function tests if the supplied value is a string containing a formal valid number.
  *
- * @param {*} value - The value to test
+ * @param value - The value to test
  */
 export function testNumber( value: any ): boolean;
 
@@ -17,7 +17,7 @@ export function testNumber( value: any ): boolean;
  * This function tests if the supplied value is a string containing a formal valid SHA2 value.
  * It performs only a formal check.
  *
- * @param {*} value - The value to test
+ * @param value - The value to test
  */
 export function testSHA2( value: any ): boolean;
 
@@ -27,7 +27,7 @@ export function testSHA2( value: any ): boolean;
  * This function tests if the supplied value is a string containing a formal valid UUID value.
  * It performs only a formal check.
  *
- * @param {*} value - The value to test
+ * @param value - The value to test
  */
 export function testUUID( value: any ): boolean;
 
@@ -37,7 +37,7 @@ export function testUUID( value: any ): boolean;
  * This function tests if the supplied value is a string containing a formal valid email
  * address value. It performs only a formal check according to https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
  *
- * @param {*} value - The value to test
+ * @param value - The value to test
  */
 export function testEmail( value: any ): boolean;
 
@@ -52,10 +52,10 @@ export function testEmail( value: any ): boolean;
  * other European languages. If needed, the function will be improved from version to
  * version.
  *
- * @param {string} value - The input value to convert
- * @param {string=} default_value - The default value to return if the conversion fails or the result is an empty string (default: <empty string>)
+ * @param value - The input value to convert
+ * @param default_value - The default value to return if the conversion fails or the result is an empty string (default: <empty string>)
  */
-export function convertUtf8ToAscii( value: string, default_value?: string | undefined ): string;
+export function convertUtf8ToAscii( value: string, default_value?: string ): string;
 
 /**
  * Decodes both true Base64 and Base64url
@@ -64,10 +64,10 @@ export function convertUtf8ToAscii( value: string, default_value?: string | unde
  * https://tools.ietf.org/html/rfc4648#section-5
  * If the conversaion fails, the function returns the supplied  `default_value`.
  *
- * @param {string} encoded - The input value to decode
- * @param {*=} default_value - The default value to return if the conversion fails
+ * @param encoded - The input value to decode
+ * @param default_value - The default value to return if the conversion fails
  */
-export function base64DecodeLazy( encoded: string, default_value?: any | undefined ): any;
+export function base64DecodeLazy<T>( encoded: string, default_value?: T ): string | T;
 
 /**
  * Decodes a JSON encoded javascript object
@@ -77,10 +77,10 @@ export function base64DecodeLazy( encoded: string, default_value?: any | undefin
  * the function does not throw any exception on errors but instead returns the supplied
  * `default_value`.
  *
- * @param {string} value - The input value to decode
- * @param {*=} default_value - The default value to return if decoding fails. (default: undefined)
+ * @param value - The input value to decode
+ * @param default_value - The default value to return if decoding fails. (default: undefined)
  */
-export function getJsonValue( value: string, default_value?: any | undefined ): any;
+export function getJsonValue( value: string, default_value?: any ): any;
 
 /**
  * Returns a valid string continaing something
@@ -88,10 +88,10 @@ export function getJsonValue( value: string, default_value?: any | undefined ): 
  * This function checks if the passed value is of type string and is not empty.  If yes, value is
  * returned, otherwise `default_value`.
  *
- * @param {*} value - The input value to check and return
- * @param {string=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getSpecifiedStr( value: any, default_value?: string | undefined ): string;
+export function getSpecifiedStr<T>( value: any, default_value?: T ): string | T;
 
 /**
 * Returns a valid array
@@ -99,10 +99,10 @@ export function getSpecifiedStr( value: any, default_value?: string | undefined 
 * This function checks if the passed value is an instance of Array. If yes, value is returned,
 * otherwise `default_value`.
 *
-* @param {*} value - The input value to check and return
-* @param {*[]=} default_value - The default value to return if the test fails. (default: undefined)
+* @param value - The input value to check and return
+* @param default_value - The default value to return if the test fails. (default: undefined)
 */
-export function getValidArr( value: any, default_value?: any[] | undefined ): any[];
+export function getValidArr<T>( value: any, default_value?: T ): any[] | T;
 
 /**
  * Returns a valid boolean
@@ -113,10 +113,10 @@ export function getValidArr( value: any, default_value?: any[] | undefined ): an
  * "off", "no" or "false" are interpreted as `false` regardless of the case.
  * If the value cannot be decoded, `default_value` is returned.
  *
- * @param {*} value - The input value to check and return
- * @param {boolean=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidBool( value: any, default_value?: boolean | undefined ): boolean;
+export function getValidBool<T>( value: any, default_value?: T ): boolean | T;
 
 /**
  * Returns a valid integer
@@ -125,10 +125,10 @@ export function getValidBool( value: any, default_value?: boolean | undefined ):
  * `parseInt( value )` is returned, otherwise `default_value`.
  * If the value cannot be decoded, `default_value` is returned.
  *
- * @param {*} value - The input value to check and return
- * @param {number=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidInt( value: any, default_value?: number | undefined ): number;
+export function getValidInt<T>( value: any, default_value?: T ): number | T;
 
 /**
  * Returns a valid integer in a defined range
@@ -138,12 +138,12 @@ export function getValidInt( value: any, default_value?: number | undefined ): n
  * otherwise `default_value`.
  * If the value cannot be decoded, `default_value` is returned.
  *
- * @param {*} value - The input value to check and return
- * @param {number=} min - Minimum value allowed (default: no lower boundary)
- * @param {number=} max - Maximum value allowed (default: no upper boundary)
- * @param {number=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param min - Minimum value allowed (default: no lower boundary)
+ * @param max - Maximum value allowed (default: no upper boundary)
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidIntRange( value: any, min?: number | undefined, max?: number | undefined, default_value?: number | undefined ): number;
+export function getValidIntRange<T>( value: any, min?: number | undefined, max?: number | undefined, default_value?: T ): number | T;
 
 /**
  * Returns a valid number
@@ -152,10 +152,10 @@ export function getValidIntRange( value: any, min?: number | undefined, max?: nu
  * `parseFloat( value )` is returned, otherwise `default_value`.
  * If the value cannot be decoded, `default_value` is returned.
  *
- * @param {*} value - The input value to check and return
- * @param {number=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidNum( value: any, default_value?: number | undefined ): number;
+export function getValidNum<T>( value: any, default_value?: T ): number | T;
 
 /**
  * Returns a valid number in a defined range
@@ -165,12 +165,12 @@ export function getValidNum( value: any, default_value?: number | undefined ): n
  * `default_value`.
  * If the value cannot be decoded or is outside the specified range, `default_value` is returned.
  *
- * @param {*} value - The input value to check and return
- * @param {number=} min - Minimum value allowed (default: no lower boundary)
- * @param {number=} max - Maximum value allowed (default: no upper boundary)
- * @param {number=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param min - Minimum value allowed (default: no lower boundary)
+ * @param max - Maximum value allowed (default: no upper boundary)
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidNumRange( value: any, min?: number | undefined, max?: number | undefined, default_value?: number | undefined ): number;
+export function getValidNumRange<T>( value: any, min?: number | undefined, max?: number | undefined, default_value?: T ): number | T;
 
 /**
  * Returns a valid object
@@ -178,10 +178,10 @@ export function getValidNumRange( value: any, min?: number | undefined, max?: nu
  * This function checks if the passed object value is an instance of Object. If yes, value is returned,
  * otherwise `default_value`.
  *
- * @param {*} value - The input value to check and return
- * @param {*=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidObj( value: any, default_value?: any | undefined ): any;
+export function getValidObj<T>( value: any, default_value?: T ): Object | T;
 
 /**
  * Returns a valid string
@@ -189,10 +189,10 @@ export function getValidObj( value: any, default_value?: any | undefined ): any;
  * This function checks if the passed value is of type string.  If yes, value is
  * returned, otherwise `default_value`.
  *
- * @param {*} value - The input value to check and return
- * @param {string=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidStr( value: any, default_value?: string | undefined ): string;
+export function getValidStr<T>( value: any, default_value?: T ): string | T;
 
 /**
  * Returns a valid string
@@ -200,12 +200,12 @@ export function getValidStr( value: any, default_value?: string | undefined ): s
  * This function checks if the passed value is of type string and its length is between the
  * supplied boundaries.  If yes, `value` is returned, otherwise `default_value`.
  *
- * @param {*} value - The input value to check and return
- * @param {number=} min - Minimum string length allowed (default: no lower boundary)
- * @param {number=} max - Maximum string length allowed (default: no upper boundary)
- * @param {string=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param min - Minimum string length allowed (default: no lower boundary)
+ * @param max - Maximum string length allowed (default: no upper boundary)
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidStrRange( value: any, min?: number | undefined, max?: number | undefined, default_value?: string | undefined ): string;
+export function getValidStrRange<T>( value: any, min?: number | undefined, max?: number | undefined, default_value?: T ): string | T;
 
 /**
  * Returns a valid string
@@ -213,11 +213,11 @@ export function getValidStrRange( value: any, min?: number | undefined, max?: nu
  * This function checks if the passed value is of type string and matches the supplied
  * regular expression. If yes, `value` is returned, otherwise `default_value`.
  *
- * @param {*} value - The input value to check and return
- * @param {RegExp} expr - The regular expression to test the value against
- * @param {string=} default_value - The default value to return if the test fails. (default: undefined)
+ * @param value - The input value to check and return
+ * @param expr - The regular expression to test the value against
+ * @param default_value - The default value to return if the test fails. (default: undefined)
  */
-export function getValidStrExpr( value: any, expr: RegExp, default_value?: string | undefined ): string;
+export function getValidStrExpr<T>( value: any, expr: RegExp, default_value?: T ): string | T;
 
 /**
  * Returns an array of tokens
@@ -231,7 +231,8 @@ export function getValidStrExpr( value: any, expr: RegExp, default_value?: strin
  * @param default_value - The default value to return on failure. (default: empty array)
  * @returns  Array containing the decoded tokens
  */
-export function getValidTokens( value: string | string[], default_value?: string[] | undefined ): string[];
+export function getValidTokens( value: string | string[] ): string[];
+export function getValidTokens<T>( value: string | string[], default_value: T ): string[] | T;
 
 /**
  * Determine the physical root path of an installed module dependency
@@ -243,10 +244,11 @@ export function getValidTokens( value: string | string[], default_value?: string
  * served by the internal http server of imcs. In order to to so, it is needed to know in which
  * patch the installed dependency resides.
  *
- * @param {string} modulename - The name of the module
- * @param {string=} default_value - The default value to return if the path cannot be determined (default: node_modules/<modulename>)
+ * @param modulename - The name of the module
+ * @param default_value - The default value to return if the path cannot be determined (default: node_modules/<modulename>)
  */
-export function getModuleRootPath( modulename: string, default_value?: string | undefined ): any;
+export function getModuleRootPath( modulename: string ): string;
+export function getModuleRootPath<T>( modulename: string, default_value: T ): string | T;
 
 /**
  * Construct a path based upon the physical root path of an installed module dependency
@@ -258,40 +260,42 @@ export function getModuleRootPath( modulename: string, default_value?: string | 
  * the library files must be served by the internal http server of imcs. In order to to so, it is
  * needed to know in which patch the installed dependency resides.
  *
- * @param {string} modulename - The name of the module
- * @param {...*} args - Path components
+ * @param modulename - The name of the module
+ * @param args - Path components
  */
-export function makeModuleRootPath( modulename: string, ...args: any[] ): any;
+export function makeModuleRootPath( modulename: string, ...args: string[] ): string;
 
 /**
  * Creates a directory recursively
  *
  * If any error occurs, this method throws an exception.
  *
- * @param {string} dirname - The directory tree to create
- * @param {number=} mode - The unix mode bits (default: 0o755)
+ * @param dirname - The directory tree to create
+ * @param mode - The unix mode bits (default: 0o755)
+ * @throws Error
  */
-export function mkdirSyncRecursively( dirname: string, mode?: number | undefined ): void;
+export function mkdirSyncRecursively( dirname: string, mode?: number ): void;
 
 /**
  * Fire-and-Forget method to insure that a directory tree exists
- * @param {string} dirname - The directory tree to create
- * @param {number=} mode - The unix mode bits (default: 0o755)
+ *
+ * @param dirname - The directory tree to create
+ * @param mode - The unix mode bits (default: 0o755)
  */
 export function createDirectoryIfNotExists( dirname: string, mode?: number | undefined ): boolean;
 
 /**
  * Checks if the supplied pathname is an existing directory
  *
- * @param {...string} paths - A sequence of path segments
- * @returns {boolean} - `true` if the specified directory exists
+ * @param paths - A sequence of path segments
+ * @returns `true` if the specified directory exists
  */
 export function isDir( ...paths: string[] ): boolean;
 
 /**
  * Checks if the supplied pathname is an existing file
  *
- * @param {...string} paths - A sequence of path segments
- * @returns {boolean} - `true` if the specified file exists
+ * @param paths - A sequence of path segments
+ * @returns `true` if the specified file exists
  */
 export function isFile( ...paths: string[] ): boolean;
