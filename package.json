@@ -13,23 +13,13 @@
 		"type": "git",
 		"url": "https://github.com/YeaSoft/baseutils.git"
 	},
-	"eslintConfig": {
-		"env": {
-			"es6": true,
-			"node": true
-		},
-		"extends": "eslint:recommended",
-		"globals": {
-			"Atomics": "readonly",
-			"SharedArrayBuffer": "readonly"
-		},
-		"parserOptions": {
-			"ecmaVersion": 2018
-		},
-		"rules": {}
-	},
 	"publishConfig": {
 		"access": "public"
 	},
-	"dependencies": {}
+	"devDependencies": {
+		"@eslint/js": "^9.23.0",
+		"@types/node": "^20.14.8",
+		"eslint": "^9.23.0",
+		"globals": "^16.0.0"
+	}
 }

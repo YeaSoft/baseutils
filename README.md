@@ -6,6 +6,6 @@ functions commonly used in our projects.
 
 The library may be added to any project with the following command:
 
-````
-# npm install @yeasoft/baseutils
-````
+```sh
+npm install @yeasoft/baseutils
+```
