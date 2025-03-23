@@ -197,7 +197,7 @@ module.exports.getValidTokens = ( value, default_value ) => {
 	} else if ( value instanceof Array ) {
 		return value.map( token => token.trim() ).filter( token => token.length > 0 );
 	}
-	return arguments.length === 1 ? [] : default_value;
+	return typeof default_value === "undefined" ? [] : default_value;
 };
 
 module.exports.getModuleRootPath = ( modulename, default_value ) => {
