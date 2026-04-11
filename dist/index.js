@@ -1,4 +1,4 @@
-// (c) 2017-2025 YeaSoft Intl - Leo Moll
+// (c) 2017-2026 YeaSoft Intl - Leo Moll
 //
 // General utility functions
 
